@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:third_app/bloc/expenses_bloc.dart';
 import 'package:third_app/widgets/expenses_list/expenses.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
@@ -72,7 +74,10 @@ class MyApp extends StatelessWidget {
             ),
       ),
       themeMode: ThemeMode.system,
-      home: const Expenses(),
+      home: BlocProvider(
+        create: (context) => ExpensesBloc(),
+        child: const Expenses(),
+      )
     );
   }
 }
